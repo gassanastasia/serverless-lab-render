@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, requests
 
 app = Flask(__name__)
 
@@ -8,7 +8,7 @@ def hello():
     
 @app.route('/echo', methods=['POST'])
 def echo():
-    data = request.get_json()
+    data = requests.get_json()
     return jsonify({
         "status": "received",
         "you_sent": data,
