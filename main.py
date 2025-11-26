@@ -8,7 +8,10 @@ def hello():
     
 @app.route('/echo', methods=['POST'])
 def echo():
-    data = request.get_json()  # Теперь request должен быть доступен
+    data = request.get_json(silent=True)  # Теперь request должен быть доступен
+    if data is None:
+        return jsonify({"status": "error", "message": "Invalid or missing JSON data"}), 400
+    
     return jsonify({
         "status": "received",
         "you_sent": data,
