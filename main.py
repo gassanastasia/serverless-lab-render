@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request  # pyright: ignore[reportUnknownVariableType, reportMissingImports] # Убедитесь что импортирован request
 
 app = Flask(__name__) # type: ignore
+app.config['JSON_AS_ASCII'] = False # type: ignore
 
 @app.route('/') # type: ignore
 def hello():
